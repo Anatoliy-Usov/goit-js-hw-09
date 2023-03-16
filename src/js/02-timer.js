@@ -31,7 +31,7 @@ startBtn.addEventListener('click', onBtnStart);
 
 function onBtnStart() {
   startBtn.setAttribute('disabled', 'true');
-  const timerVision = timerRun();
+  timerRun();
 }
 
 function addZero(value) {
@@ -39,7 +39,7 @@ function addZero(value) {
 }
 
 function timerRun() {
-  setInterval(() => {
+  const timeRun = setInterval(() => {
     const currentDate = Date.now();
     let msLeft = timeTimer - currentDate;
     let convertedTime = convertMs(msLeft);
@@ -50,8 +50,9 @@ function timerRun() {
     timeHours.textContent = hours;
     timeDays.textContent = days;
 
-    if (timeTimer - msLeft <= 1000) {
-      clearInterval(timerVision);
+    if (msLeft <= 1000) {
+      clearInterval(timeRun);
+      return;
     }
   }, 1000);
 }
