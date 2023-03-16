@@ -8,10 +8,15 @@ function color() {
 }
 
 function startStopBtn() {
-  startBtn.removeAttribute('disabled');
-  stopBtn.setAttribute('disabled', 'true');
+  if (startBtn.addEventListener('click', onStart)) {
+    startBtn.setAttribute('disabled', 'true') &&
+      stopBtn.removeAttribute('disabled');
+  }
+  if (stopBtn.addEventListener('click', onStop)) {
+    startBtn.removeAttribute('disabled') &&
+      stopBtn.setAttribute('disabled', 'true');
+  }
 }
-
 startBtn.addEventListener('click', onStart);
 stopBtn.addEventListener('click', onStop);
 
@@ -22,6 +27,6 @@ function onStart() {
   }, 500);
 }
 function onStop() {
-  clearInterval(intervalBackgroundColor);
   startStopBtn();
+  clearInterval(intervalBackgroundColor);
 }

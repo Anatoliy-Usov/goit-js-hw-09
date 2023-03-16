@@ -27,8 +27,6 @@ const options = {
   },
 };
 
-flatpickr('input[type="text"]', options);
-
 startBtn.addEventListener('click', onBtnStart);
 
 function onBtnStart() {
@@ -71,3 +69,5 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
+
+flatpickr('input[type="text"]', options);
